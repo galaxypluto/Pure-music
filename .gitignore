@@ -41,21 +41,82 @@ app.*.map.json
 .fvm
 lib/page/settings_page/cpfeedback_key.dart
 
-# Local Environment
+# Local Environment / IDE
 .tmp/
 .vscode/
-.trae/
 .vs/
 .docs/
 .test/
+.idea/
+
+# ---------------------------------------------------------------------------
+# AI agent harness (local-only — do not include in upstream PRs)
+# Covers Trellis + common coding-agent platform dirs / instruction files.
+# Meta-repo root may also hold .trellis/.cursor/.agent; those are outside
+# this git root. Keep product commits free of these paths.
+# ---------------------------------------------------------------------------
+.trellis/
+skills-lock.json
+AGENTS.md
+CLAUDE.local.md
+GEMINI.md
+CODEX.md
+.cursorrules
+.cursorignore
+.windsurfrules
+.clinerules
+.roomodes
+.aider.conf.yml
+.aider*
+
+# Platform integration roots (Trellis / agentskills / IDE agents)
+.cursor/
 .claude/
 .agent/
+.codex/
 .opencode/
+.kiro/
+.gemini/
+.kilocode/
+.devin/
+.windsurf/
+.codebuddy/
+.qoder/
+.factory/
+.pi/
+.omp/
+.reasonix/
+.zcode/
+.grok/
+.kimi-code/
+.snow/
+.trae/
+.continue/
 .superpowers/
+.specstory/
+.augment/
+.amazonq/
+.firebender/
 
-# Trae specific - ignore rules and skills but keep other .trae files
-.trae/rules/
-.trae/Skills/
+# Shared agentskills layer — keep only the project's puremusic-dev skills tracked
+# (Must use `/*` not trailing-slash dir ignore, or negations never apply.)
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/puremusic-dev/
+!.agents/skills/puremusic-dev/**
+
+
+# Copilot / GitHub agent extras (keep normal .github/workflows)
+.github/skills/
+.github/agents/
+.github/copilot/
+.github/prompts/
+
+# Local MCP / agent config
+.mcp.json
+**/mcp.local.json
+
 
 # Rust
 target/
@@ -95,12 +156,3 @@ docs/
 output/
 output/data/
 release/
-
-# Generated / Local only
-AGENTS.md
-skills-lock.json
-.agents/*
-!.agents/skills/
-.agents/skills/*
-!.agents/skills/puremusic-dev/
-!.agents/skills/puremusic-dev/**
